@@ -97,7 +97,7 @@ const MarketTrends = ({ userProfile }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-1">
                         <div className="bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 rounded-3xl h-full">
-                            <TrendAlerts />
+                            <TrendAlerts userProfile={userProfile} />
                         </div>
                     </div>
                     <div className="lg:col-span-2">
