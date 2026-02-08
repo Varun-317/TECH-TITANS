@@ -22,7 +22,7 @@ const TrendChart = () => {
         >
             <div className="mb-6">
                 <h3 className="text-xl font-semibold text-white">Market Demand Trends</h3>
-                <p className="text-slate-400 text-sm">Demand trajectory for all engineering industries (2024)</p>
+                <p className="text-slate-400 text-sm">Demand trajectory for all engineering industries (2025)</p>
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
