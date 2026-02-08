@@ -4,15 +4,13 @@ import CalibrationQuiz from './CalibrationQuiz';
 import StudyTimeline from './StudyTimeline';
 import DailyTasks from './DailyTasks';
 import ProgressBar from './ProgressBar';
+import { courseResources, jobMarketData } from '../data/courseResources';
 
-const StudyPlanner = () => {
+const StudyPlanner = ({ userProfile, setUserProfile }) => {
     const [status, setStatus] = useState('quiz'); // quiz, dashboard
-    const [tasks, setTasks] = useState([
-        { id: 1, title: 'Neural Network Architectures', duration: '55 mins', tag: 'Video', completed: true },
-        { id: 2, title: 'Hyperparameter Optimization Lab', duration: '2.4 hours', tag: 'Lab', completed: false },
-        { id: 3, title: 'Self-Assessment: Linear Algebra', duration: '30 mins', tag: 'Quiz', completed: false },
-        { id: 4, title: 'Transformer Models Deep Dive', duration: '1.5 hours', tag: 'Video', completed: false },
-    ]);
+    const defaultDomain = 'Computer Engineering';
+    const initialTasks = courseResources[defaultDomain] || courseResources['Computer Engineering'];
+    const [tasks, setTasks] = useState(initialTasks);
 
     const toggleTask = (id) => {
         setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
@@ -20,6 +18,54 @@ const StudyPlanner = () => {
 
     const completedCount = tasks.filter(t => t.completed).length;
     const progressPercent = Math.round((completedCount / tasks.length) * 100);
+
+    const handleQuizComplete = (answers) => {
+        setUserProfile(answers);
+        const selectedDomain = answers.domain;
+        const newTasks = courseResources[selectedDomain] || courseResources['Computer Engineering'];
+        setTasks(newTasks);
+        setStatus('dashboard');
+    };
+
+    const curriculumExpansion = {
+        "Computer Engineering": [
+            { id: 5, title: 'Distributed Systems & Consistency Models', duration: '2.5 hours', tag: 'Deep Dive', completed: false },
+            { id: 6, title: 'Rust Integration for Performance', duration: '1.5 hours', tag: 'Lab', completed: false }
+        ],
+        "Mechanical Engineering": [
+            { id: 5, title: 'Computational Fluid Dynamics (CFD)', duration: '3 hours', tag: 'Simulation', completed: false },
+            { id: 6, title: 'Mechatronics System Control', duration: '2 hours', tag: 'Lab', completed: false }
+        ],
+        "Automobile Engineering": [
+            { id: 5, title: 'Hydrogen Fuel Cell Technology', duration: '2 hours', tag: 'Research', completed: false },
+            { id: 6, title: 'ADAS Algorithms Deep Dive', duration: '2.5 hours', tag: 'Coding', completed: false }
+        ],
+        "Robotics & Automation": [
+            { id: 5, title: 'Swarm Robotics Coordination', duration: '1.5 hours', tag: 'Theory', completed: false },
+            { id: 6, title: 'Reinforcement Learning for Control', duration: '3 hours', tag: 'AI/ML', completed: false }
+        ],
+        "Electrical Engineering": [
+            { id: 5, title: 'FPGA Design with Verilog', duration: '2.5 hours', tag: 'Lab', completed: false },
+            { id: 6, title: 'High Voltage DC Transmission', duration: '1.5 hours', tag: 'Theory', completed: false }
+        ],
+        "Communication Engineering": [
+            { id: 5, title: 'Quantum Communication Basics', duration: '2 hours', tag: 'Future Tech', completed: false },
+            { id: 6, title: 'Software Defined Radio (SDR) Lab', duration: '2.5 hours', tag: 'Lab', completed: false }
+        ]
+    };
+
+    const handleExpandCurriculum = () => {
+        const domain = userProfile?.domain || "Computer Engineering";
+        const newModules = curriculumExpansion[domain] || curriculumExpansion["Computer Engineering"];
+
+        // check if already expanded
+        if (tasks.find(t => t.id === 5)) {
+            alert("Curriculum already expanded to maximum capacity for this sprint.");
+            return;
+        }
+
+        setTasks(prev => [...prev, ...newModules]);
+    };
 
     return (
         <section id="planner" className="py-48 px-4 sm:px-6 lg:px-8 bg-white/[0.01]">
@@ -49,7 +95,7 @@ const StudyPlanner = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <CalibrationQuiz onComplete={() => setStatus('dashboard')} />
+                            <CalibrationQuiz onComplete={handleQuizComplete} />
                         </motion.div>
                     ) : (
                         <motion.div
@@ -71,8 +117,13 @@ const StudyPlanner = () => {
                                         transition={{ duration: 10, repeat: Infinity }}
                                         className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -mr-32 -mt-32"
                                     />
-                                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-8">System Velocity</h4>
-                                    <ProgressBar label="Overall Mastery Achievement" progress={34} />
+                                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-8">
+                                        System Velocity: <span className="text-primary">{userProfile?.domain || 'General Engineering'}</span>
+                                    </h4>
+                                    <ProgressBar
+                                        label={`Mastery Achievement (${userProfile?.proficiency?.split(' ')[0] || 'In Progress'})`}
+                                        progress={34}
+                                    />
                                 </motion.div>
 
                                 <motion.div
@@ -134,8 +185,8 @@ const StudyPlanner = () => {
                                             <div>
                                                 <p className="text-sm font-black text-white uppercase tracking-widest mb-2">Neural Recommendation</p>
                                                 <p className="text-sm text-slate-400 leading-relaxed">
-                                                    Performance metrics indicate high retention in **Video Modules**.
-                                                    System has auto-scaled your technical lab complexity by 12% to match your current velocity.
+                                                    Analysis of your {userProfile?.domain} trajectory indicates high retention in **Interactive Labs**.
+                                                    System has prioritized {tasks.find(t => !t.completed)?.title || "Advanced Modules"} to align with your {userProfile?.proficiency?.split(' ')[0]} goal.
                                                 </p>
                                             </div>
                                         </motion.div>
@@ -148,10 +199,11 @@ const StudyPlanner = () => {
                                     transition={{ delay: 0.5 }}
                                     className="space-y-12"
                                 >
-                                    <StudyTimeline />
+                                    <StudyTimeline domain={userProfile?.domain} />
                                     <motion.button
                                         whileHover={{ scale: 1.05, y: -5 }}
                                         whileTap={{ scale: 0.95 }}
+                                        onClick={handleExpandCurriculum}
                                         className="w-full py-5 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] text-xs shadow-[0_20px_40px_rgba(255,255,255,0.05)]"
                                     >
                                         Expand Curriculum
@@ -166,9 +218,9 @@ const StudyPlanner = () => {
                             </div>
                         </motion.div>
                     )}
-                </AnimatePresence>
-            </div>
-        </section>
+                </AnimatePresence >
+            </div >
+        </section >
     );
 };
 
