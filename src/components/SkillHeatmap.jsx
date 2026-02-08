@@ -1,47 +1,66 @@
-import React from 'react';
-import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Treemap, ResponsiveContainer, Tooltip } from "recharts";
+import { motion } from "framer-motion";
 
 const data = [
     {
-        name: 'Frontend',
+        name: "Computer Engineering",
         children: [
-            { name: 'React', size: 4000 },
-            { name: 'Vue', size: 2000 },
-            { name: 'Angular', size: 1500 },
-            { name: 'Next.js', size: 3500 },
+            { name: "React (92%)", size: 4000 },
+            { name: "System Design (88%)", size: 3800 },
+            { name: "Docker/K8s (85%)", size: 3600 },
         ],
     },
     {
-        name: 'Backend',
+        name: "Mechanical Engineering",
         children: [
-            { name: 'Node.js', size: 3800 },
-            { name: 'Python', size: 4500 },
-            { name: 'Go', size: 2200 },
-            { name: 'Java', size: 3000 },
+            { name: "CAD (90%)", size: 3900 },
+            { name: "Thermodynamics (85%)", size: 3700 },
+            { name: "Finite Element (80%)", size: 3400 },
         ],
     },
     {
-        name: 'AI/ML',
+        name: "Automobile Engineering",
         children: [
-            { name: 'PyTorch', size: 3900 },
-            { name: 'TensorFlow', size: 2800 },
-            { name: 'NLP', size: 3200 },
-            { name: 'LLMs', size: 5000 },
+            { name: "EV Technology (92%)", size: 4100 },
+            { name: "Vehicle Dynamics (87%)", size: 3750 },
+            { name: "Battery Management (84%)", size: 3600 },
         ],
     },
     {
-        name: 'Cloud',
+        name: "Robotics & Automation",
         children: [
-            { name: 'AWS', size: 4200 },
-            { name: 'Azure', size: 3100 },
-            { name: 'Docker', size: 3500 },
-            { name: 'Kubernetes', size: 3300 },
+            { name: "ROS/ROS2 (88%)", size: 3800 },
+            { name: "Control Systems (86%)", size: 3700 },
+            { name: "Kinematics (82%)", size: 3500 },
+        ],
+    },
+    {
+        name: "Electrical Engineering",
+        children: [
+            { name: "Power Systems (89%)", size: 3850 },
+            { name: "Signal Processing (85%)", size: 3650 },
+            { name: "Circuit Design (81%)", size: 3450 },
+        ],
+    },
+    {
+        name: "Communication Engineering",
+        children: [
+            { name: "5G Technology (91%)", size: 4000 },
+            { name: "Network Protocols (87%)", size: 3750 },
+            { name: "RF Design (83%)", size: 3550 },
         ],
     },
 ];
 
-const COLORS = ['#3b82f6', '#a855f7', '#10b981', '#f59e0b', '#ef4444'];
+const COLORS = [
+    "#3b82f6",
+    "#a855f7",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+    "#06b6d4",
+];
 
 const CustomizedContent = (props) => {
     const { root, depth, x, y, width, height, index, name } = props;
@@ -55,7 +74,7 @@ const CustomizedContent = (props) => {
                 height={height}
                 style={{
                     fill: COLORS[index % COLORS.length],
-                    stroke: '#0f172a',
+                    stroke: "#0f172a",
                     strokeWidth: 2 / (depth + 1),
                     strokeOpacity: 1,
                 }}
@@ -86,8 +105,8 @@ const SkillHeatmap = () => {
             className="bg-slate-900/50 backdrop-blur-xl border border-white/10 p-6 rounded-3xl h-[400px]"
         >
             <div className="mb-6">
-                <h3 className="text-xl font-semibold text-white">Skill Saturation Heatmap</h3>
-                <p className="text-slate-400 text-sm">Relative market value of current technologies</p>
+                <h3 className="text-xl font-semibold text-white">Industry Skills Demand</h3>
+                <p className="text-slate-400 text-sm">Top demanded skills by industry with demand percentages</p>
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
@@ -101,10 +120,10 @@ const SkillHeatmap = () => {
                 >
                     <Tooltip
                         contentStyle={{
-                            backgroundColor: '#0f172a',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderRadius: '12px',
-                            color: '#fff'
+                            backgroundColor: "#0f172a",
+                            border: "1px solid rgba(255,255,255,0.1)",
+                            borderRadius: "12px",
+                            color: "#fff",
                         }}
                     />
                 </Treemap>

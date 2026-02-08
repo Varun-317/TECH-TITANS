@@ -402,9 +402,9 @@ export const courseResources = {
 export const jobMarketData = {
   "Computer Engineering": {
     jobs: [
-      { role: 'Senior Fullstack Engineer', salary: '$145k - $210k', company: 'FAANG', skills: ['React', 'Node.js', 'System Design'], location: 'San Francisco' },
-      { role: 'Backend Engineer', salary: '$120k - $180k', company: 'Startups', skills: ['Python', 'AWS', 'Microservices'], location: 'Remote' },
-      { role: 'DevOps Engineer', salary: '$130k - $190k', company: 'Enterprise', skills: ['Docker', 'K8s', 'CI/CD'], location: 'New York' }
+      { role: 'Senior Fullstack Engineer', salary: '12-18 LPA', company: 'FAANG', skills: ['React', 'Node.js', 'System Design'], location: 'Bangalore' },
+      { role: 'Backend Engineer', salary: '10-15 LPA', company: 'Startups', skills: ['Python', 'AWS', 'Microservices'], location: 'Remote' },
+      { role: 'DevOps Engineer', salary: '11-16 LPA', company: 'Enterprise', skills: ['Docker', 'K8s', 'CI/CD'], location: 'Pune' }
     ],
     skills: [
       { name: 'React', demand: 92, growth: '+45%' },
@@ -414,9 +414,9 @@ export const jobMarketData = {
   },
   "Mechanical Engineering": {
     jobs: [
-      { role: 'Product Design Lead', salary: '$110k - $160k', company: 'Manufacturing', skills: ['CAD', 'FEA', 'Project Management'], location: 'Detroit' },
-      { role: 'Mechanical Engineer', salary: '$90k - $140k', company: 'Aerospace', skills: ['CATIA', 'ANSYS', 'Thermodynamics'], location: 'Southern CA' },
-      { role: 'Manufacturing Engineer', salary: '$95k - $145k', company: 'Automotive', skills: ['Lean', 'Six Sigma', 'CAD'], location: 'Various' }
+      { role: 'Product Design Lead', salary: '9-13 LPA', company: 'Manufacturing', skills: ['CAD', 'FEA', 'Project Management'], location: 'Chennai' },
+      { role: 'Mechanical Engineer', salary: '7.5-11 LPA', company: 'Aerospace', skills: ['CATIA', 'ANSYS', 'Thermodynamics'], location: 'Hyderabad' },
+      { role: 'Manufacturing Engineer', salary: '8-12 LPA', company: 'Automotive', skills: ['Lean', 'Six Sigma', 'CAD'], location: 'Pune' }
     ],
     skills: [
       { name: 'CAD Design', demand: 78, growth: '+25%' },
@@ -426,9 +426,9 @@ export const jobMarketData = {
   },
   "Automobile Engineering": {
     jobs: [
-      { role: 'EV Systems Architect', salary: '$130k - $190k', company: 'Tesla/NIO', skills: ['EV Tech', 'Control Systems', 'Battery Tech'], location: 'Bay Area' },
-      { role: 'Powertrain Engineer', salary: '$110k - $165k', company: 'OEM', skills: ['Engine Design', 'Simulation', 'Emissions'], location: 'Detroit' },
-      { role: 'Autonomous Driving Engineer', salary: '$135k - $200k', company: 'Waymo', skills: ['ADAS', 'LiDAR', 'C++'], location: 'Mountain View' }
+      { role: 'EV Systems Architect', salary: '11-16 LPA', company: 'Tesla/NIO', skills: ['EV Tech', 'Control Systems', 'Battery Tech'], location: 'Bangalore' },
+      { role: 'Powertrain Engineer', salary: '9-14 LPA', company: 'OEM', skills: ['Engine Design', 'Simulation', 'Emissions'], location: 'Mumbai' },
+      { role: 'Autonomous Driving Engineer', salary: '11.5-17 LPA', company: 'Autonomous Co.', skills: ['ADAS', 'LiDAR', 'C++'], location: 'Pune' }
     ],
     skills: [
       { name: 'EV Powertrains', demand: 89, growth: '+80%' },
@@ -438,9 +438,9 @@ export const jobMarketData = {
   },
   "Robotics & Automation": {
     jobs: [
-      { role: 'Robotics Software Engineer', salary: '$125k - $185k', company: 'Boston Dynamics', skills: ['ROS', 'C++', 'ML'], location: 'Boston' },
-      { role: 'Automation Engineer', salary: '$100k - $155k', company: 'Manufacturing', skills: ['PLC', 'SCADA', 'CAM'], location: 'Midwest' },
-      { role: 'Computer Vision Engineer', salary: '$120k - $175k', company: 'Perception', skills: ['OpenCV', 'YOLO', 'PyTorch'], location: 'Remote' }
+      { role: 'Robotics Software Engineer', salary: '10.5-15.5 LPA', company: 'Robotics Inc.', skills: ['ROS', 'C++', 'ML'], location: 'Bangalore' },
+      { role: 'Automation Engineer', salary: '8.5-13 LPA', company: 'Manufacturing', skills: ['PLC', 'SCADA', 'CAM'], location: 'Ahmedabad' },
+      { role: 'Computer Vision Engineer', salary: '10-15 LPA', company: 'Tech Co.', skills: ['OpenCV', 'YOLO', 'PyTorch'], location: 'Remote' }
     ],
     skills: [
       { name: 'ROS', demand: 81, growth: '+40%' },
@@ -450,9 +450,9 @@ export const jobMarketData = {
   },
   "Electrical Engineering": {
     jobs: [
-      { role: 'Embedded Systems Lead', salary: '$120k - $175k', company: 'Semiconductor', skills: ['Verilog', 'FPGA', 'C'], location: 'San Jose' },
-      { role: 'Power Systems Engineer', salary: '$105k - $160k', company: 'Utility', skills: ['PSSE', 'Smart Grid', 'High Voltage'], location: 'Various' },
-      { role: 'PCB Design Engineer', salary: '$95k - $145k', company: 'Electronics', skills: ['Altium', 'Signal Integrity', 'EMC'], location: 'Remote' }
+      { role: 'Embedded Systems Lead', salary: '10-15 LPA', company: 'Electronics', skills: ['Verilog', 'FPGA', 'C'], location: 'Bangalore' },
+      { role: 'Power Systems Engineer', salary: '8.5-13 LPA', company: 'Utility', skills: ['PSSE', 'Smart Grid', 'High Voltage'], location: 'Delhi' },
+      { role: 'PCB Design Engineer', salary: '8-12.5 LPA', company: 'Electronics', skills: ['Altium', 'Signal Integrity', 'EMC'], location: 'Remote' }
     ],
     skills: [
       { name: 'FPGA/Verilog', demand: 79, growth: '+30%' },
@@ -462,9 +462,9 @@ export const jobMarketData = {
   },
   "Communication Engineering": {
     jobs: [
-      { role: '5G Network Architect', salary: '$135k - $200k', company: 'Telecom', skills: ['5G', 'Network Design', 'Protocols'], location: 'Various' },
-      { role: 'RF Engineer', salary: '$115k - $170k', company: 'Wireless', skills: ['RF Design', 'HFSS', 'Antennas'], location: 'San Diego' },
-      { role: 'Optical Communications Engineer', salary: '$120k - $175k', company: 'Fiber Companies', skills: ['Fiber Optics', 'DWDM', 'DSP'], location: 'Remote' }
+      { role: '5G Network Architect', salary: '11.5-17 LPA', company: 'Telecom', skills: ['5G', 'Network Design', 'Protocols'], location: 'Mumbai' },
+      { role: 'RF Engineer', salary: '9.5-14.5 LPA', company: 'Wireless', skills: ['RF Design', 'HFSS', 'Antennas'], location: 'Bangalore' },
+      { role: 'Optical Communications Engineer', salary: '10-15.5 LPA', company: 'Telecom', skills: ['Fiber Optics', 'DWDM', 'DSP'], location: 'Remote' }
     ],
     skills: [
       { name: '5G Technology', demand: 87, growth: '+75%' },
