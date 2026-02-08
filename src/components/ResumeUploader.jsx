@@ -22,17 +22,16 @@ const ResumeUploader = ({ onUpload }) => {
     };
 
     const handleFile = (file) => {
-        onUpload(true); // Start processing
-        setTimeout(() => {
-            onUpload(false); // Done
-        }, 1500);
+        if (file) {
+            onUpload(file);
+        }
     };
 
     return (
         <div
             className={`relative group border-2 border-dashed rounded-3xl p-16 text-center transition-all duration-500 overflow-hidden ${isDragging
-                    ? 'border-primary bg-primary/10 scale-[1.02] shadow-[0_0_50px_rgba(139,92,246,0.2)]'
-                    : 'border-white/10 hover:border-white/30 hover:bg-white/5'
+                ? 'border-primary bg-primary/10 scale-[1.02] shadow-[0_0_50px_rgba(139,92,246,0.2)]'
+                : 'border-white/10 hover:border-white/30 hover:bg-white/5'
                 } glass`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
